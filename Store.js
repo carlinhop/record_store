@@ -23,5 +23,13 @@ Store.prototype.showInventory = function(){
   return result;
 };
 
+Store.prototype.sell = function(record){
+  this.cash += record.price;
+  var index = this.inventory.indexOf(record);
+  this.inventory.splice(index, 1);
+};
+
+
+
 
 module.exports = Store;

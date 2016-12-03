@@ -5,6 +5,9 @@ var Store = require("../Store");
 describe("Store", function(){
   var store1;
   var record1;
+  var record2;
+  var record3;
+
 
   before(function(){
     store1 = new Store("Gozadera Records", "Caracas");
@@ -37,7 +40,6 @@ describe("Store", function(){
   });
 
   it("should have a bank account", function(){
-    
     assert.equal(0,store1.cash);
   });
 
@@ -49,6 +51,18 @@ describe("Store", function(){
     result.set("Arepa 3000", 1);
     assert.deepEqual(result, store1.showInventory());
   });
+
+
+  it("should sell records", function(){
+    store1.sell(record1);
+    result = new Map();
+    result.set("Rawayanaland", 1);
+    result.set("Arepa 3000", 1);
+    assert.equal(10,store1.cash);
+    assert.deepEqual(result, store1.showInventory());
+  });
+
+
 
 
 
